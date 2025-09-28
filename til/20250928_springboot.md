@@ -78,6 +78,6 @@ sequenceDiagram
 1.  `SpringApplication.run()`이 시작됩니다.
 2.  `@EnableAutoConfiguration`이 읽히고, `AutoConfigurationImportSelector`가 동작합니다.
 3.  스프링 부트 3에서는 **`META-INF/spring/org.springframework.boot.autoconfigure.AutoConfiguration.imports` 파일**에서 자동 구성 클래스 목록을 가져옵니다.
-4.  각 자동 구성 클래스의 `@Conditional*` 조건이 평가되어, 조건을 만족하는 클래스만 스프링 컨텍스트에 빈으로 등록됩니다.
+4.  각 자동 구성 클래스의 `@Conditional` 조건이 평가되어, 조건을 만족하는 클래스만 스프링 컨텍스트에 빈으로 등록됩니다.
 
 이러한 동작 원리를 이해하면 스프링 부트가 어떻게 복잡한 설정을 자동으로 처리하는지 명확히 파악할 수 있으며, 커스텀 자동 구성 모듈을 개발하거나 설정 문제를 해결하는 데 큰 도움이 됩니다. 스프링 부트의 효율적인 개발 경험은 바로 이러한 내부 동작 원리 덕분입니다.
