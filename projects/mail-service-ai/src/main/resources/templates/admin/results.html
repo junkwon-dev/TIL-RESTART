@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{layout :: layout(~{::title}, ~{::content})}">
+<head>
+    <title>Test Results</title>
+</head>
+<body>
+    <div th:fragment="content">
+        <h1>Test Results</h1>
+
+        <div th:if="${latestRun}">
+            <p><strong>Timestamp:</strong> <span th:text="${latestRun.timestamp}"></span></p>
+            <p><strong>Total Requests:</strong> <span th:text="${latestRun.totalRequests}"></span></p>
+
+            <h2>Distribution Results</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Service Provider</th>
+                        <th>Sent Count</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="result : ${latestRun.distributionResults}">
+                        <td th:text="${result.serviceProviderName}"></td>
+                        <td th:text="${result.sentCount}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div th:unless="${latestRun}">
+            <p>No test runs found.</p>
+        </div>
+
+        <a th:href="@{/admin/providers}" class="btn btn-primary">Back to Providers</a>
+    </div>
+</body>
+</html>
