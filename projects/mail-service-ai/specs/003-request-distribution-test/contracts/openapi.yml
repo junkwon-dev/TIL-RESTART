@@ -1,0 +1,111 @@
+openapi: 3.0.0
+info:
+  title: Mail Service AI API
+  version: 1.0.0
+paths:
+  /admin/services:
+    get:
+      summary: Get all service providers
+      responses:
+        '200':
+          description: A list of service providers
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EmailServiceProvider'
+    post:
+      summary: Create a new service provider
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmailServiceProvider'
+      responses:
+        '201':
+          description: Service provider created
+  /admin/services/{id}:
+    put:
+      summary: Update a service provider
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmailServiceProvider'
+      responses:
+        '200':
+          description: Service provider updated
+    delete:
+      summary: Delete a service provider
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '204':
+          description: Service provider deleted
+  /admin/test-send:
+    post:
+      summary: Trigger a test send of 100 emails
+      responses:
+        '202':
+          description: Test send accepted
+  /admin/test-results:
+    get:
+      summary: Get the results of the last test send
+      responses:
+        '200':
+          description: The results of the last test send
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TestSendRun'
+components:
+  schemas:
+    EmailServiceProvider:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        ratio:
+          type: integer
+        is_active:
+          type: boolean
+    TestSendRun:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        timestamp:
+          type: string
+          format: date-time
+        total_requests:
+          type: integer
+        distribution_results:
+          type: array
+          items:
+            $ref: '#/components/schemas/TestSendResult'
+    TestSendResult:
+      type: object
+      properties:
+        service_provider_name:
+          type: string
+        sent_count:
+          type: integer

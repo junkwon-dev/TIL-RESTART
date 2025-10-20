@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{layout :: layout(~{::title}, ~{::content})}">
+<head>
+    <title>Provider Configuration</title>
+</head>
+<body>
+    <div th:fragment="content">
+        <h1>Email Service Providers</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Ratio</th>
+                    <th>Active</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="provider : ${providers}">
+                    <td th:text="${provider.name}"></td>
+                    <td th:text="${provider.ratio}"></td>
+                    <td th:text="${provider.isActive}"></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <form th:action="@{/admin/test-send}" method="post">
+            <button type="submit" class="btn btn-info">Send 100 Test Emails</button>
+        </form>
+
+        <h2>Add New Provider</h2>
+        <form th:action="@{/admin/providers}" th:object="${newProvider}" method="post">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" th:field="*{name}">
+            </div>
+            <div class="form-group">
+                <label for="ratio">Ratio</label>
+                <input type="number" class="form-control" id="ratio" th:field="*{ratio}">
+            </div>
+            <button type="submit" class="btn btn-primary">Add</button>
+        </form>
+    </div>
+</body>
+</html>
