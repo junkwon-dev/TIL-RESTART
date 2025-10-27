@@ -23,6 +23,13 @@ class MailController(
         return mailingApplication.sendMail(sendMailCommand)
     }
 
+    @PostMapping("mail/receive")
+    fun receiveMail(
+        @RequestBody sendMailCommand: SendMailCommand
+    ){
+        return mailingApplication.receiveMail(sendMailCommand)
+    }
+
     @PostMapping("/bulk")
     fun sendBulkMail(
     ){

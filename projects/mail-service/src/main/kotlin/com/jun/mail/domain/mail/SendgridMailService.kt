@@ -10,6 +10,7 @@ class SendgridMailService(
     private val mailSentLogRepository: MailSentLogRepository
 ): MailService{
     override fun sendMail(userId: Long, from: String, to: String, content: String) {
+        throw RuntimeException("Disastered")
         mailSentLogRepository.save(
             MailSentLog(
                 id = null,

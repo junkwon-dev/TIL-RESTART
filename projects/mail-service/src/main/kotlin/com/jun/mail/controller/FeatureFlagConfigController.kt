@@ -1,6 +1,7 @@
 package com.jun.mail.controller
 
 import com.jun.mail.domain.command.CreateFeatureFlagConfigCommand
+import com.jun.mail.domain.command.UpdateFeatureFlagConfigCommand
 import com.jun.mail.domain.entity.FeatureFlagConfig
 import com.jun.mail.domain.featureFlagConfig.FeatureFlagConfigService
 import org.springframework.http.MediaType
@@ -21,6 +22,13 @@ class FeatureFlagConfigController(
     @PostMapping
     fun createConfig(@RequestBody config: CreateFeatureFlagConfigCommand): FeatureFlagConfig {
         return featureFlagConfigService.createFeatureFlagConfig(command = config)
+    }
+
+    @PutMapping("/{featureFlagConfigId}")
+    fun updateConfig(
+        @PathVariable("featureFlagConfigId") featureFlagConfigId: Long,
+        @RequestBody config: UpdateFeatureFlagConfigCommand): FeatureFlagConfig {
+        return featureFlagConfigService.updateFeatureFlagConfig(id= featureFlagConfigId, command = config)
     }
 
     @PutMapping("/{featureFlagConfigId}/toggle")

@@ -28,4 +28,13 @@ class FeatureFlagConfig(
     fun toggle(){
         isActive = !isActive
     }
+
+    fun update(
+        options: List<String>,
+        isActive: Boolean,
+    ): FeatureFlagConfig {
+        this.options = options
+        this.isActive = isActive
+        return this
+    }
 }

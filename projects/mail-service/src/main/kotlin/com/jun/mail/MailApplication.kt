@@ -2,10 +2,10 @@ package com.jun.mail
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
-import org.springframework.resilience.annotation.EnableResilientMethods
+import org.springframework.retry.annotation.EnableRetry
 
 @SpringBootApplication
-@EnableResilientMethods
+@EnableRetry
 class mailApplication
 
 fun main(args: Array<String>) {
