@@ -36,8 +36,7 @@ class MailingApplication(
                         content = sendMailCommand.content,
                     )
                     return
-                } catch (e: Exception) {
-                }
+                } catch (e: Exception){}
             }
         }
 
@@ -64,9 +63,7 @@ class MailingApplication(
                         content = sendMailCommand.content,
                     )
                     return
-                } catch (e: Exception) {
-                    println(e.message)
-                }
+                } catch (e: Exception) {}
             }
         }
     }
@@ -121,9 +118,7 @@ class MailingApplication(
                         content = sendMailCommand.content,
                     )
                     return
-                } catch (e: Exception) {
-                    println(e.message)
-                }
+                } catch (e: Exception) {}
             }
         }
     }
