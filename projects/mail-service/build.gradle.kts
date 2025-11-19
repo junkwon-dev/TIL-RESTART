@@ -27,6 +27,7 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation ("org.springframework.retry:spring-retry:2.0.12")
     implementation("org.springframework:spring-aspects")
+    implementation("io.github.resilience4j:resilience4j-spring-boot3:2.2.0")
 	runtimeOnly("com.h2database:h2")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
